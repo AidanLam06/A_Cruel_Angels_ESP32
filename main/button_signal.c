@@ -96,7 +96,6 @@ void ledcWriteTone(ledc_channel_t channel, uint32_t freq) {
 void play_melody() {
     int length = sizeof(melody) / sizeof(melody[0]);
     for (int i = 0; i < length; i++) {
-        // if (button_pressed != 1) break;
         ESP_LOGI("MELODY", "playing note %d", i);
         if (melody[i] == REST) {
             int rest = getDuration(EIGHTH);
@@ -131,7 +130,7 @@ void app_main(void) {
         .speed_mode = LEDC_LOW_SPEED_MODE,
         .duty_resolution = LEDC_RESOLUTION,
         .timer_num = LEDC_TIMER_0,
-        .freq_hz = 2000, // Initial frequency
+        .freq_hz = 2000,
         .clk_cfg = LEDC_AUTO_CLK,
     };
     ledc_timer_config(&ledc_timer);
